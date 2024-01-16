@@ -5,17 +5,21 @@ import com.sourav.blindauction.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final String USER_REGISTERED = "User registered successfully";
+    private static final String USER_REGISTERED = "User registered successfully: ";
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public String registerUser(User user) {
+        String token = UUID.randomUUID().toString();
+        user.setToken(token);
         userRepository.save(user);
-        return USER_REGISTERED;
+        return USER_REGISTERED+token;
     }
 
     @Override

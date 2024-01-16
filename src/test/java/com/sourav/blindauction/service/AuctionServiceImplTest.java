@@ -42,11 +42,10 @@ public class AuctionServiceImplTest {
 
     @Test
     public void testRegisterProduct_ValidSellerToken_ReturnsSuccessMessage() {
-        // Mocking data
         String sellerToken = "validSellerToken";
         Product product = new Product();
         User mockSeller = new User();
-        mockSeller.setUserId("sellerId");
+        mockSeller.setId("sellerId");
 
         when(userRepository.findByToken(sellerToken)).thenReturn(mockSeller);
 
@@ -58,7 +57,6 @@ public class AuctionServiceImplTest {
 
     @Test
     public void testRegisterProduct_InvalidSellerToken_ReturnsErrorMessage() {
-        // Mocking data
         String sellerToken = "invalidSellerToken";
         Product product = new Product();
 
@@ -79,7 +77,7 @@ public class AuctionServiceImplTest {
         bid.setBidAmount(150.0);
 
         User mockBuyer = new User();
-        mockBuyer.setUserId("buyerId");
+        mockBuyer.setId("buyerId");
         when(userRepository.findByToken(buyerToken)).thenReturn(mockBuyer);
 
         Product mockProduct = new Product();
@@ -98,7 +96,7 @@ public class AuctionServiceImplTest {
         String productId = "validProductId";
 
         User mockSeller = new User();
-        mockSeller.setUserId("sellerId");
+        mockSeller.setId("sellerId");
         when(userRepository.findByToken(sellerToken)).thenReturn(mockSeller);
 
         Product mockProduct = new Product();
@@ -128,7 +126,7 @@ public class AuctionServiceImplTest {
         String productId = "validProductId";
 
         User mockSeller = new User();
-        mockSeller.setUserId("sellerId");
+        mockSeller.setId("sellerId");
         when(userRepository.findByToken(sellerToken)).thenReturn(mockSeller);
 
         Product mockProduct = new Product();

@@ -2,8 +2,8 @@ package com.sourav.blindauction.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,7 +12,8 @@ import javax.persistence.Id;
 @Setter
 public class Product {
     @Id
-    private String productId;
+    @Column(name = "productId")
+    private String id;
     private String sellerId;
     private String productName;
     private double minBidPrice;

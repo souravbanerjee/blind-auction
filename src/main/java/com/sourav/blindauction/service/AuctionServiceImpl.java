@@ -35,7 +35,7 @@ public class AuctionServiceImpl implements AuctionService {
     public String registerProduct(String sellerToken, Product product) {
         User seller = validateSellerToken(sellerToken);
         if (seller != null) {
-            product.setSellerId(seller.getUserId());
+            product.setSellerId(seller.getId());
             productRepository.save(product);
             return "Product registered successfully";
         } else {
@@ -50,7 +50,7 @@ public class AuctionServiceImpl implements AuctionService {
         Product product = productRepository.findById(productId).orElse(null);
 
         if (buyer != null && product != null && bid.getBidAmount() >= product.getMinBidPrice()) {
-            bid.setBuyerId(buyer.getUserId());
+            bid.setBuyerId(buyer.getId());
             bid.setProductId(productId);
             bidRepository.save(bid);
             return true;
